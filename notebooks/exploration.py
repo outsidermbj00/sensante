@@ -42,3 +42,12 @@ print(f"\n{'=' * 50}")
 print("Exploration terminee !")
 print("Prochain lab : entrainer un modele ML")
 print(f"{'=' * 50}")
+
+
+
+print(f"\n--- Repartition par sexe et diagnostic ---")
+
+grouped = df.groupby(["sexe", "diagnostic"]).size()
+
+for (sexe, diag), count in grouped.items():
+    print(f" Sexe {sexe} - {diag:12s} : {count} patients")
