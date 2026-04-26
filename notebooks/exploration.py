@@ -44,7 +44,6 @@ print("Prochain lab : entrainer un modele ML")
 print(f"{'=' * 50}")
 
 
-
 print(f"\n--- Repartition par sexe et diagnostic ---")
 
 grouped = df.groupby(["sexe", "diagnostic"]).size()
