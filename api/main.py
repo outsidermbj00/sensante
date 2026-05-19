@@ -43,7 +43,16 @@ app = FastAPI(
     version="0.2.0"
 )
 
+from fastapi.middleware.cors import CORSMiddleware
 
+# Autoriser les requetes depuis le frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # En dev : tout accepter
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # =========================
 # Chargement du modèle
 # =========================
@@ -180,3 +189,19 @@ def predict(patient: PatientInput):
             "Consultez un médecin."
         )
     )
+
+# app = FastAPI()
+
+# # Charger ton modèle (exemple)
+# model = joblib.load("notebooks/models/model.pkl")
+
+# @app.get("/model-info")
+# def model_info():
+#     return {
+#         "model_type": type(model).__name__,
+#         "n_estimators": getattr(model, "n_estimators", "N/A"),
+#         "classes": model.classes_.tolist() if hasattr(model, "classes_") else None,
+#         "n_features": model.n_features_in_ if hasattr(model, "n_features_in_") else None
+#     }
+    
+    
